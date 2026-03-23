@@ -10,17 +10,6 @@ describe('Orange HRM tests', () => {
     dashboardGrid: ".orangehrm-dashboard-grid",
     wrongCredentialAlert: "[role='alert']"
   }
-  
-  const userData = {
-    userSuccess: {
-      username: 'Admin',
-      password: 'admin123'
-    },
-    userFail: {
-      username: 'teste',
-      password:'teste'
-    }
-  }
 
   it('Login - Success', () => {
     cy.visit('/auth/login')
