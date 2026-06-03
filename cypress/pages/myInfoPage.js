@@ -31,8 +31,22 @@ class MyInfoPage {
         cy.get(this.selectorsList().genericField).eq(6).clear({force: true}).type(LicenseExpiryDate + '{enter}') 
         // Data de Expiração /{force: true} para ignorar o bloqueio do calendário
         cy.get(this.selectorsList().genericField).eq(7).clear({force: true}).type(DateOfBirth + '{enter}')
+        // cy.get('body').click(0,0)
+        cy.get('.--close').click({force: true}) // fecha o calendário
+        // ou
+        cy.get('body').type('{esc}') // fecha com ESC // clica no canto da tela
+        cy.wait(500) // espera meio segundo pra animação acabar
          // Data de Nascimento
-        cy.get(this.selectorsList().genericField).eq(8).clear({force: true}).type(TestField)
+        cy.get('.orangehrm-edit-employee-content').within(() => {
+        // cy.get(this.selectorsList().genericField).eq(8).clear({force: true}).type(TestField)
+        // })
+        cy.contains('label', 'Test_Field')
+            .parent()
+            .siblings()
+            .find('input')
+            .clear({force: true})
+            .type(TestField)
+})
         cy.get(this.selectorsList().dropdown).eq(0).click()
         cy.get(this.selectorsList().dropdownOptions).should('be.visible').contains(nationality).click()
          // Seleção de Nacionalidade
